@@ -1,0 +1,4 @@
+node_modules/
+.netlify/
+out_check.js
+.DS_Store
