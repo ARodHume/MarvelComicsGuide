@@ -34,29 +34,6 @@ function EntryCard({ entry, color, onOpen }) {
 }
 
 function TimelineView({ entries, onOpen }) {
-  return (
-    <div>
-      {PHASES.map(ph => {
-        const items = entries.filter(e => e.phase === ph.n);
-        if (!items.length) return null;
-        return (
-          <div className="phase-section" key={ph.n}>
-            <div className="phase-heading">
-              <span className="dot" style={{ background: ph.color }}></span>
-              <h2>Fase {ph.n}</h2>
-              <span className="years">{ph.label}</span>
-            </div>
-            <div className="card-grid">
-              {items.map(e => <EntryCard key={e.id} entry={e} color={ph.color} onOpen={onOpen} />)}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function CatalogoView({ entries, onOpen }) {
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('tutti');
 
@@ -90,9 +67,22 @@ function CatalogoView({ entries, onOpen }) {
       {filtered.length === 0 ? (
         <div className="empty-state">Nessun titolo trovato.</div>
       ) : (
-        <div className="card-grid">
-          {filtered.map(e => <EntryCard key={e.id} entry={e} color={phaseColor(e.phase)} onOpen={onOpen} />)}
-        </div>
+        PHASES.map(ph => {
+          const items = filtered.filter(e => e.phase === ph.n);
+          if (!items.length) return null;
+          return (
+            <div className="phase-section" key={ph.n}>
+              <div className="phase-heading">
+                <span className="dot" style={{ background: ph.color }}></span>
+                <h2>Fase {ph.n}</h2>
+                <span className="years">{ph.label}</span>
+              </div>
+              <div className="card-grid">
+                {items.map(e => <EntryCard key={e.id} entry={e} color={ph.color} onOpen={onOpen} />)}
+              </div>
+            </div>
+          );
+        })
       )}
     </div>
   );
@@ -421,16 +411,12 @@ function App() {
       </header>
       <main className="app-main">
         {tab === 'timeline' && <TimelineView entries={entries} onOpen={setOpenId} />}
-        {tab === 'catalogo' && <CatalogoView entries={entries} onOpen={setOpenId} />}
         {tab === 'mappa' && <MappaView entries={entries} onOpen={setOpenId} />}
-        <div className="app-footer">Macrotrama v1.0.0</div>
+        <div className="app-footer">Macrotrama v1.1.0</div>
       </main>
       <nav className="bottom-nav">
         <button className={tab === 'timeline' ? 'active' : ''} onClick={() => setTab('timeline')}>
           <span className="icon">🕒</span>Timeline
-        </button>
-        <button className={tab === 'catalogo' ? 'active' : ''} onClick={() => setTab('catalogo')}>
-          <span className="icon">📚</span>Catalogo
         </button>
         <button className={tab === 'mappa' ? 'active' : ''} onClick={() => setTab('mappa')}>
           <span className="icon">🕸️</span>Mappa

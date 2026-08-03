@@ -22,7 +22,7 @@ In locale senza `netlify dev` la funzione `/api/data` non esiste: la GET rispond
 - `npm i playwright-core` in una cartella scratch, poi `chromium.launch({ channel: 'msedge', headless: true })`.
 - Viewport: mobile `390x844`, desktop `1400x900` (non ci sono breakpoint di layout critici oltre alle card grid, ma la Mappa va controllata su entrambi per via dello scroll orizzontale).
 - Nessun login: l'app non ha autenticazione.
-- Selettori utili: card `.card`, apertura scheda `.modal-sheet` / `.modal-title`, tab bottom nav `.bottom-nav button` filtrato per testo (es. `{ hasText: 'Catalogo' }` — **non** usare `getByText(..., {exact:true})` sui tab, il bottone contiene anche l'icona emoji quindi il testo esatto non combacia mai), nodi mappa `.map-node`, classe di attenuazione `.map-node.dim`, pulsante dati header `.app-header button` con `{ hasText: 'Dati' }`, indicatore sync `.sync-indicator`.
+- Selettori utili: card `.card`, apertura scheda `.modal-sheet` / `.modal-title`, tab bottom nav `.bottom-nav button` filtrato per testo (**non** usare `getByText(..., {exact:true})` sui tab, il bottone contiene anche l'icona emoji quindi il testo esatto non combacia mai), sezioni fase `.phase-section`, ricerca `.search-input`, filtro stato `.filter-chip` con `{ hasText: 'Letto' }` ecc., nodi mappa `.map-node`, classe di attenuazione `.map-node.dim`, pulsante dati header `.app-header button` con `{ hasText: 'Dati' }`, indicatore sync `.sync-indicator`.
 - Raccogliere `pageerror` e `console error`; ignorare i 404 di `/api/data` e favicon in locale.
 
 ## Flussi che vale la pena guidare
