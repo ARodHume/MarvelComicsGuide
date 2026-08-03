@@ -90,12 +90,19 @@ export const SEED = RAW.map(entry => {
   return entry;
 });
 
-export const PHASES = [
+export const DEFAULT_PHASES = [
   { n: 1, label: "2004–2010", color: "#2FA84F" },
   { n: 2, label: "2011–2012", color: "#F5C518" },
   { n: 3, label: "2013–2016", color: "#D6336C" },
   { n: 4, label: "2016–2021", color: "#7B4FE0" },
   { n: 5, label: "2022–oggi", color: "#0FA3B1" }
+];
+
+// Palette pop-art estesa: le prime 5 sono quelle delle fasi di default;
+// le fasi aggiunte dall'utente pescano in sequenza da qui in poi.
+export const PALETTE = [
+  "#2FA84F", "#F5C518", "#D6336C", "#7B4FE0", "#0FA3B1",
+  "#E8590C", "#1971C2", "#F06595", "#37B24D", "#845EF7"
 ];
 
 export const TYPE_BADGE = {

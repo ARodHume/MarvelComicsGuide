@@ -26,6 +26,7 @@ In locale senza `netlify dev` la funzione `/api/data` non esiste: la GET rispond
 - Raccogliere `pageerror` e `console error`; ignorare i 404 di `/api/data` e favicon in locale.
 
 ## Flussi che vale la pena guidare
+0. **Nuovo titolo (FAB "+")**: apre `NewEntryModal`. Verificare: submit senza titolo mostra errore; scegliendo "+ Nuova fase (successiva)" compare un campo etichetta e, al submit, sia il nuovo titolo sia la nuova fase devono comparire **insieme** (stesso click) — se conti le card e le `.phase-section` prima/dopo e la fase non è aumentata pur avendo scelto "nuova fase", è regredito il bug di race condition sui due `setState` in sequenza (vedi commit che ha introdotto lo stato unico `appData` in `App`, non separare più `entries`/`phases` in due `useState` distinti).
 1. **Timeline**: conta le card (24 su dati seed), apri una card, verifica titolo nel modale.
 2. **Catalogo**: ricerca testuale + filtro stato, verifica che il conteggio cali coerentemente.
 3. **Mappa**: conta i nodi, tocca un nodo → verifica che gli altri prendano classe `dim` (evidenziazione), tocca di nuovo lo stesso nodo entro ~400ms → deve aprirsi il modale di dettaglio (doppio tap).

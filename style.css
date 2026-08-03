@@ -507,6 +507,31 @@ button {
   text-align: center;
 }
 
+.fab {
+  position: fixed;
+  right: 18px;
+  bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+  z-index: 25;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: var(--border-w) solid var(--ink);
+  background: #fff;
+  box-shadow: var(--shadow-off) var(--shadow-off) 0 0 var(--ink);
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+}
+
+.fab:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--ink);
+}
+
 .app-footer {
   text-align: center;
   font-family: 'JetBrains Mono', monospace;
